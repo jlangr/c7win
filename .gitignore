@@ -2,3 +2,6 @@ build
 *.swp
 *.swo
 test.dat
+Debug
+*.suo
+
