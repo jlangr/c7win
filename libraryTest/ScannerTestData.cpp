@@ -1,7 +1,5 @@
 #include "ScannerTestData.h"
 
-#include <string>
-
 using std::string;
 
 const string ScannerTestData::PATRON_JOE_CARD("p123");

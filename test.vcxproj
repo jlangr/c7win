@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{971BB469-94C1-4E4B-8ADD-E0FA4A56C25D}</ProjectGuid>
+    <RootNamespace>c2</RootNamespace>
+    <ProjectName>test</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120_CTP_Nov2012</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(GMOCK_HOME)\msvc\2010\Debug;$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(BOOST_INCLUDE);library\include;$(IncludePath)</IncludePath>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(GMOCK_HOME)\include;$(GMOCK_HOME)\gtest\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_VARIADIC_MAX=10;BOOST_ALL_NO_LIB</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);gmock.lib;prod.lib</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="$(RunPostBuild)!='false'">
+    <PostBuildEvent>
+      <Command>.\Debug\test.exe</Command>
+    </PostBuildEvent>
+    <ClCompile>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/%(RelativeDir)/</ObjectFileName>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </AdditionalOptions>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="libraryTest\ASSERT_CURRENT_STATE.h" />
+    <ClCompile Include="libraryTest\BarcodeUtilTest.cpp" />
+    <ClCompile Include="libraryTest\BookTest.cpp" />
+    <ClCompile Include="libraryTest\BranchAccessTest.cpp" />
+    <ClCompile Include="libraryTest\BranchServiceTest.cpp" />
+    <ClCompile Include="libraryTest\BranchTest.cpp" />
+    <ClCompile Include="libraryTest\BranchTestData.h" />
+    <ClCompile Include="libraryTest\CatalogTest.cpp" />
+    <ClCompile Include="libraryTest\ClassificationServiceTest.cpp" />
+    <ClCompile Include="libraryTest\HoldingBarcodeTest.cpp" />
+    <ClCompile Include="libraryTest\HoldingServiceTest.cpp" />
+    <ClCompile Include="libraryTest\HoldingTest.cpp" />
+    <ClCompile Include="libraryTest\InventoryReportTest.cpp" />
+    <ClCompile Include="libraryTest\KeyedFilePersistenceTest.cpp" />
+    <ClCompile Include="libraryTest\KeyedMemoryPersistenceTest.cpp" />
+    <ClCompile Include="libraryTest\main.cpp" />
+    <ClCompile Include="libraryTest\PatronAccessTest.cpp" />
+    <ClCompile Include="libraryTest\PatronServiceTest.cpp" />
+    <ClCompile Include="libraryTest\PatronTest.cpp" />
+    <ClCompile Include="libraryTest\PersistenceTest.cpp" />
+    <ClCompile Include="libraryTest\PersistenceTest.h" />
+    <ClCompile Include="libraryTest\ReportMailerTest.cpp" />
+    <ClCompile Include="libraryTest\ScannerStateCheckinTest.cpp" />
+    <ClCompile Include="libraryTest\ScannerStateCheckoutTest.cpp" />
+    <ClCompile Include="libraryTest\ScannerStateInventoryTest.cpp" />
+    <ClCompile Include="libraryTest\ScannerStateWaitingTest.cpp" />
+    <ClCompile Include="libraryTest\ScannerTest.cpp" />
+    <ClCompile Include="libraryTest\ScannerTestData.cpp" />
+    <ClCompile Include="libraryTest\ScannerTestData.h" />
+    <ClCompile Include="libraryTest\StreamLineReaderTest.cpp" />
+    <ClCompile Include="libraryTest\TestScanner.h" />
+    <ClCompile Include="libraryTest\TestSerializable.h" />
+    <ClCompile Include="libraryTest\TimestampSourceTest.cpp" />
+    <ClCompile Include="libraryTest\VectorReaderTest.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

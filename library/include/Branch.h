@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BRANCH_H
+#define BRANCH_H
 
 #include "Serializable.h"
 
@@ -39,3 +40,5 @@ typedef std::vector<Branch>::iterator BranchIterator;
 
 std::istream& operator >>(std::istream&, Branch&);
 std::ostream& operator <<(std::ostream&, Branch&);
+
+#endif
