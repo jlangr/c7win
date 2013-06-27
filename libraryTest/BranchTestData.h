@@ -1,10 +1,12 @@
 #ifndef BRANCHTEST_H
 #define BRANCHTEST_H
 
+#include "Branch.h"
+
 namespace BranchTestData {
-   Branch EAST_BRANCH("1", "east");
-   Branch WEST_BRANCH("2", "west");
-   Branch ArbitraryBranch("3", "rockrimmon");
+   extern Branch EAST_BRANCH;
+   extern Branch WEST_BRANCH;
+   extern Branch ArbitraryBranch;
 };
 
 #endif
