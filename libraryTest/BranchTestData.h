@@ -3,10 +3,10 @@
 
 #include "Branch.h"
 
-class BranchTestData {
-   static const Branch EAST_BRANCH;
-   static const Branch WEST_BRANCH;
-   static const Branch ArbitraryBranch;
+namespace BranchTestData {
+   extern Branch EAST_BRANCH;
+   extern Branch WEST_BRANCH;
+   extern Branch ArbitraryBranch;
 };
 
 #endif

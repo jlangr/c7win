@@ -66,6 +66,7 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/%(RelativeDir)/</ObjectFileName>
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </AdditionalOptions>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsCpp</CompileAs>
     </ClCompile>
     <ProjectReference>
       <LinkLibraryDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkLibraryDependencies>
@@ -91,7 +92,6 @@
     <ClCompile Include="libraryTest\BranchAccessTest.cpp" />
     <ClCompile Include="libraryTest\BranchServiceTest.cpp" />
     <ClCompile Include="libraryTest\BranchTest.cpp" />
-    <ClCompile Include="libraryTest\BranchTestData.h" />
     <ClCompile Include="libraryTest\BranchTestData.cpp" />
     <ClCompile Include="libraryTest\CatalogTest.cpp" />
     <ClCompile Include="libraryTest\ClassificationServiceTest.cpp" />
@@ -106,14 +106,12 @@
     <ClCompile Include="libraryTest\PatronServiceTest.cpp" />
     <ClCompile Include="libraryTest\PatronTest.cpp" />
     <ClCompile Include="libraryTest\PersistenceTest.cpp" />
-    <ClCompile Include="libraryTest\PersistenceTest.h" />
     <ClCompile Include="libraryTest\ReportMailerTest.cpp" />
     <ClCompile Include="libraryTest\ScannerStateCheckinTest.cpp" />
     <ClCompile Include="libraryTest\ScannerStateCheckoutTest.cpp" />
     <ClCompile Include="libraryTest\ScannerStateInventoryTest.cpp" />
     <ClCompile Include="libraryTest\ScannerStateWaitingTest.cpp" />
     <ClCompile Include="libraryTest\ScannerTest.cpp" />
-    <ClCompile Include="libraryTest\ScannerTestData.h" />
     <ClCompile Include="libraryTest\ScannerTestData.cpp" />
     <ClCompile Include="libraryTest\StreamLineReaderTest.cpp" />
     <ClCompile Include="libraryTest\TestScanner.h" />
