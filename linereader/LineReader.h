@@ -47,7 +47,7 @@ class LineReader {
   }
 
   ~LineReader() {
-     close(fd_);
+     _close(fd_);
   }
 
   // The maximum length of a line.
