@@ -29,18 +29,20 @@
 
 #include "gmock/gmock.h"
 #include <stdlib.h>
-#include <unistd.h>
 #include <sys/types.h>
+
+#include "mkstemp.h"
 
 #include "LineReader.h"
 
 static int TemporaryFile() {
-  static const char templ[] = "/tmp/line-reader-unittest-XXXXXX";
-  char templ_copy[sizeof(templ)];
   memcpy(templ_copy, templ, sizeof(templ));
   const int fd = mkstemp(templ_copy);
   if (fd >= 0)
     unlink(templ_copy);
+
+  gfd = fd;
+  closed = false;
 
   return fd;
 }
@@ -51,6 +53,7 @@ typedef testing::Test LineReaderTest;
 
 TEST(LineReaderTest, EmptyFile) {
   const int fd = TemporaryFile();
+
   LineReader reader(fd);
 
   const char *line;
