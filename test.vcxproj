@@ -118,6 +118,7 @@
     <ClCompile Include="libraryTest\TestSerializable.h" />
     <ClCompile Include="libraryTest\TimestampSourceTest.cpp" />
     <ClCompile Include="libraryTest\VectorReaderTest.cpp" />
+    <ClCompile Include="linereader\LineReaderTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
