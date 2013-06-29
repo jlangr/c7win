@@ -29,27 +29,33 @@
 
 #include "gmock/gmock.h"
 #include <stdlib.h>
-#include <unistd.h>
 #include <sys/types.h>
+
+#include "mkstemp.h"
 
 #include "LineReader.h"
 
 static int TemporaryFile() {
-  static const char templ[] = "/tmp/line-reader-unittest-XXXXXX";
-  char templ_copy[sizeof(templ)];
   memcpy(templ_copy, templ, sizeof(templ));
   const int fd = mkstemp(templ_copy);
   if (fd >= 0)
     unlink(templ_copy);
 
+  gfd = fd;
+  closed = false;
+
+  return fd;
+}
+
+static int WriteTemporaryFile(const char* records, size_t count) {
+  const int fd = TemporaryFile();
+  write(fd, records, count);
+  lseek(fd, 0, SEEK_SET);
   return fd;
 }
 
 static int WriteTemporaryFile(const char* records) {
-  const int fd = TemporaryFile();
-  write(fd, records, strlen(records));
-  lseek(fd, 0, SEEK_SET);
-  return fd;
+   return WriteTemporaryFile(records, strlen(records));
 }
 
 // START:OneLine
@@ -64,10 +70,6 @@ public:
 
 // END:OneLine
 
-//namespace {
-//typedef testing::Test LineReaderTest;
-//}
-
 TEST_F(LineReaderTest, EmptyFile) {
   fd = WriteTemporaryFile("");
   LineReader reader(fd);
@@ -78,7 +80,7 @@ TEST_F(LineReaderTest, EmptyFile) {
 }
 
 TEST_F(LineReaderTest, OneLineTerminated) {
-  int fd = WriteTemporaryFile("a\n");
+  fd = WriteTemporaryFile("a\n");
   LineReader reader(fd);
 
   const char *line;
@@ -150,7 +152,7 @@ TEST_F(LineReaderTest, TwoLines) {
 TEST_F(LineReaderTest, MaxLength) {
   char l[LineReader::kMaxLineLen - 1];
   memset(l, 'a', sizeof(l));
-  fd = WriteTemporaryFile(l);
+  fd = WriteTemporaryFile(l, sizeof(l));
   LineReader reader(fd);
 
   const char *line;
