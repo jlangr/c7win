@@ -36,6 +36,7 @@
     <ClCompile Include="library\StreamLineReader.cpp" />
     <ClCompile Include="library\TimestampSource.cpp" />
     <ClCompile Include="library\Transport.cpp" />
+    <ClCompile Include="linereader\LineReader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="library\include\BarcodeUtil.h" />
@@ -79,6 +80,7 @@
     <ClInclude Include="library\include\Transport.h" />
     <ClInclude Include="library\include\VectorReader.h" />
     <ClInclude Include="library\include\VectorWriter.h" />
+    <ClInclude Include="library\include\mkstemp.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C3E5FC8E-5AEC-47E8-BD03-CC4B94EDFC10}</ProjectGuid>
@@ -122,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>library\include</AdditionalIncludeDirectories>
-      <AdditionalOptions>/D_SCL_SECURE_NO_WARNINGS</AdditionalOptions>
+      <AdditionalOptions>/D_SCL_SECURE_NO_WARNINGS /D_CRT_SECURE_NO_WARNINGS</AdditionalOptions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
